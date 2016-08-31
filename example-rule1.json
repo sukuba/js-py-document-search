@@ -1,0 +1,6 @@
+[
+  ["\\.txt$", "notepad.exe"],
+  ["\\.(?:doc[mx]?|rtf)$", "word-converter.exe"],
+  ["\\.xls$", null],
+  [".*", "all-converter.exe"]
+]
