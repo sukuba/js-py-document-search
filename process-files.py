@@ -15,6 +15,7 @@ import re
 import argparse
 import codecs
 import json
+import datetime
 import jsngram.dir2
 
 def howto_process(rulefile):
@@ -44,9 +45,12 @@ def howto_process(rulefile):
                 p = subprocess.Popen([com, filename, dest], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 stdout, stderr = p.communicate()
                 rc = p.returncode
-                print(stdout, stderr, rc)
+                print(str(stdout, 'cp932', 'ignore'), str(stderr, 'cp932', 'ignore'), rc)
+                return (rc, com, str(stderr, 'utf-8', 'ignore'))
             except OSError as err:
                 print(err)
+                return (1, com, err)
+        return (2, None, None)
     return fn_rule
     
 def process_files(args):
@@ -55,10 +59,33 @@ def process_files(args):
     rule is a json file that contains how to process each of files.
     expected args; rule, src, dest
     """
+    start_time = datetime.datetime.now()
+    print('Start: ', start_time)
+    
     rule = howto_process(args.rule)
     result = jsngram.dir2.apply_files(args.src, args.dest, rule)
     
-    print(result)
+    end_time = datetime.datetime.now()
+    span = end_time - start_time
+    sspan = '%d seconds' % span.seconds if span.seconds < 3600 else '%d hours' % span.days * 24
+    print('End: ', end_time, ' / runtime: ', sspan)
+    
+    stat = {'com':{}, 'rc':{}}
+    for r in result:
+        r_src, r_dest, r_rcs = r
+        r_rc, r_com, rc_err = r_rcs
+        r_rc_zero = 0 if r_rc == 0 else 1
+        stat['com'][r_com] = 1 + stat['com'].get(r_com, 0)
+        stat['rc'][r_rc_zero] = 1 + stat['rc'].get(r_rc_zero, 0)
+    print('種類別集計: ')
+    for k, v in stat['com'].items():
+        print('  %d 個を次の手続きで処理。 %s' % (v, k))
+    print('全体集計: ')
+    print('  %d 個をテキストに変換。' % stat['rc'][0])
+    print('  %d 個の変換に失敗。' % stat['rc'][1])
+    
+    #print(result)
+    #print(stat)
     
 
 def main():
