@@ -29,6 +29,7 @@ class WordApp(object):
             pythoncom.CoInitialize()
         self.app = win32com.client.DispatchEx('Word.Application')
         self.app.Application.Visible = self.visible
+        self.app.Application.DisplayAlerts = 0  # wdAlertsNone
         return self.app
         
     def __exit__(self, type, value, traceback):
@@ -48,7 +49,8 @@ class WordDocument(object):
         
     def __enter__(self):
         print('Opening %s ...' % self.filename)
-        self.doc = self.app.Documents.Open(self.filename)
+        self.doc = self.app.Documents.Open(self.filename, False, True, False)
+        #                          FileName, ConfirmConversions, ReadOnly, AddToRecentFiles
         return self.doc
         
     def __exit__(self, type, value, traceback):
