@@ -1,3 +1,4 @@
 [
-  ["\\.(?:doc[mx]?|rtf)$", "E:\\scratch\\example-word-to-text.bat"]
+  ["\\.(?:doc[mx]?|rtf)$", "E:\\scratch\\example-word-to-text.bat"],
+  ["\\.pdf$", "E:\\scratch\\example-pdf-to-text.bat"]
 ]

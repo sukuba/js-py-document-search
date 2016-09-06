@@ -57,13 +57,13 @@ def process_files(args):
     """
     process files in a directory tree at src and write at dest.
     rule is a json file that contains how to process each of files.
-    expected args; rule, src, dest
+    expected args; rule, src, dest, root
     """
     start_time = datetime.datetime.now()
     print('Start: ', start_time)
     
     rule = howto_process(args.rule)
-    result = jsngram.dir2.apply_files(args.src, args.dest, rule)
+    result = jsngram.dir2.apply_files(args.src, args.dest, rule, not args.root)
     
     end_time = datetime.datetime.now()
     span = end_time - start_time
@@ -77,6 +77,10 @@ def process_files(args):
         r_rc_zero = 0 if r_rc == 0 else 1
         stat['com'][r_com] = 1 + stat['com'].get(r_com, 0)
         stat['rc'][r_rc_zero] = 1 + stat['rc'].get(r_rc_zero, 0)
+        if r_rc_zero == 1:
+            pass
+            print('失敗: %s' % r_src)
+        
     print('種類別集計: ')
     for k, v in stat['com'].items():
         print('  %d 個を次の手続きで処理。 %s' % (v, k))
@@ -97,6 +101,7 @@ def main():
     第1引数: 変換ルールを記述したjsonファイル（フルパス）
     第2引数: 入力元ディレクトリ（フルパス）
     第3引数: 出力先ディレクトリ（フルパス）
+    --root: ルートのファイルも出力する
     
     入力元のサブディレクトリを含む全ファイルを、
     変換ルールにしたがって変換し、
@@ -121,6 +126,7 @@ def main():
     parser.add_argument('rule', help='変換ルールを記述したjsonファイル')
     parser.add_argument('src', help='入力元ディレクトリ')
     parser.add_argument('dest', help='出力先ディレクトリ')
+    parser.add_argument('-r', '--root', action='store_true', help='ルートのファイルも出力する')
     args = parser.parse_args()
     
     process_files(args)
