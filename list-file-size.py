@@ -20,7 +20,7 @@ def get_size(src, dummy):
 def list_file_size(args):
     """
     List file sizes of source directory, including subdirectories.
-    expectes args; src
+    expected args; src
     """
     result = jsngram.dir2.apply_files(args.src, None, get_size)
     for r in result:
