@@ -36,7 +36,7 @@ def normal_text(file):
 def pdf_to_text(args):
     """
     converts PDF file into text files.
-    expectes args; filename, dest, normalize
+    expected args; filename, dest, normalize
     many parts of this function comes from pdf2txt.py distributed with pdfminer.
     """
     outfile = os.path.join(args.dest.decode('cp932'), os.path.basename(args.filename.decode('cp932')) + '.txt')

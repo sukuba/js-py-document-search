@@ -75,7 +75,7 @@ def normal_text(text):
 def word_to_text(args):
     """
     converts Word document into text files.
-    expectes args; filename, dest, normalize, invisible, verbose
+    expected args; filename, dest, normalize, invisible, verbose
     """
     with WordApp(visible=not args.invisible) as app:
         with WordDocument(app, args.filename) as doc:
