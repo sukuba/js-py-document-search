@@ -1,0 +1,20 @@
+{
+  "a.txt":
+  [
+    "title",
+    "author",
+    "year",
+    "journal",
+    "volume",
+    "number"
+  ],
+  "b/c.txt":
+  [
+    "title2",
+    "author2",
+    "year2",
+    "journal2",
+    "volume2",
+    "number2"
+  ]
+}
