@@ -12,6 +12,7 @@ https://github.com/sukuba/js-py-document-search
 import argparse
 import os.path
 import codecs
+import sys
 import re
 import json
 import win32com.client
@@ -267,14 +268,26 @@ def make_json_files(params, args, sheets):
     
     return index
 
+def find_first_match(path, pattern):
+    """
+    find a first match file in path with pattern
+    """
+    
+    for entry in os.listdir(path):
+        if pattern.match(entry):
+            return os.path.join(path, entry)
+    sys.exit('No files found matching %s in %s.' % (pattern.pattern, path))
+
 def excel_to_json(args):
     """
     converts Excel book into json files per worksheet.
-    expects args; filename, dest, columns, url, noheader, verbose
+    expects args; filename, dest, columns, url, noheader, verbose, pattern, sheet
     """
     with ExcelApp(visible=not args.invisible) as app:
         with ExcelBook(app, args.filename) as book:
             sheets = book.Worksheets
+            if args.sheet:
+                sheets = list((s for s in sheets if s.Name in args.sheet))
             params = make_params(args, sheets[0])
             index = make_json_files(params, args, sheets)
             
@@ -294,6 +307,8 @@ def main():
     
     第1引数: 変換元エクセルブック（フルパスまたは出力先パス）
     第2引数: 出力先ディレクトリ（フルパス）
+    --pattern: ファイル名曖昧指定（正規表現）
+    --sheet: 対象ワークシート（複数、省略時はすべて）
     --origin: 基準セル（表範囲の左上アドレス、省略時はA1）
     --columns: 有効カラム（絶対列アドレス）
     --url: Hyperlink情報を持つ列（絶対列アドレス）
@@ -304,15 +319,17 @@ def main():
     --verbose: 冗長な情報を出力する
     
     生成するjsonは、ArrayのArray。行優先マトリックス。
+    sheet指定があれば、そのシート群が対象で、なければ全部が対象。
     A1がブランクでないシートを変換対象とする。
     シート単位でjsonファイルを作る。
     すべてのシートが同じ形式だと想定している。
     origin (A1)からの連続領域を有効データの範囲とする。
     columns指定があれば、それを優先し、なければ、先頭シートの形式を優先する。
-    各シートを、sheet0.json等の連番ファイルに変換する。
+    各シートを、sheet1.json等の連番ファイルに変換する。
     ファイルとシート名の関連情報を、index.jsonに書き出す。
     ヘッダー情報があれば、columns.jsonに書き出す。
     url指定した列にHyperlink情報があれば、url情報としてカラム末尾に追加する。
+    pattern指定があれば、変換元ディレクトリで、最初に一致したファイルを変換元とする。
     
     エクセル本体が必要（インストール済みであること）。
     
@@ -325,6 +342,8 @@ def main():
     parser = argparse.ArgumentParser(description='エクセル表をjsonファイルに変換する')
     parser.add_argument('filename', help='エクセルファイル名(読み取り)')
     parser.add_argument('dest', help='出力先ディレクトリ')
+    parser.add_argument('-p', '--pattern', type=str, default=None, help='ファイル名曖昧指定（正規表現）')
+    parser.add_argument('-s', '--sheet', type=str, nargs='+', help='対象ワークシート（複数）')
     parser.add_argument('-o', '--origin', default="A1", help='基準セル')
     parser.add_argument('-c', '--columns', help='有効カラム（列アドレス）')
     parser.add_argument('-u', '--url', help='Hyperlink情報のあるカラム（列アドレス）')
@@ -336,6 +355,8 @@ def main():
     args = parser.parse_args()
     
     args.filename = os.path.join(args.dest, args.filename)
+    if args.pattern:
+        args.filename = find_first_match(args.filename, re.compile(args.pattern))
     
     if args.verbose:
         print(args)

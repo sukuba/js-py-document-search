@@ -1,0 +1,64 @@
+メンテナンス側
+
+インデックス作成手順
+
+コンピューターを開く
+
+OS(C:)
+suukba
+a
+
+step1envを、SAKURAで開く。
+
+読み込み元ディレクトリを確認し、
+必要なら修正し、保存する。
+
+rem 使用するデータのディレクトリ
+set ORIGINAL=C:\sukuba\original
+
+
+
+コマンドプロンプトを開く
+
+cd C:\sukuba\a
+
+C:\sukuba\a>
+と表示されていることを確認する。
+
+step-all
+
+ワードがダイアログを出せば、適宜、答えてあげる。
+
+C:\sukuba\a\pub の中身を、メディアに転送して配布する。
+
+
+step-all.bat は以下を順次実行している。
+各ステップを確認しつつ、
+以下を個別に実行してもよい。
+
+step1env
+step2copy
+setp3xls
+step4txt
+step5idx
+
+
+
+
+step1env
+環境変数を整える
+Python 3 の実行環境を作る
+
+step2copy
+DBを編集場所のフォルダから、作業フォルダ兼配布フォルダにコピーする。
+
+setp3xls
+収録ファイル一覧.xls から実施課題一覧シートを読み、検索画面用の補助情報として保存する。
+
+step4txt
+dbのファイルをテキストに変換してtxtを作成する。
+
+step5idx
+txtのファイルから検索インデックスを作成しidxに保存する。
+
+

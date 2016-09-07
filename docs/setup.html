@@ -1,0 +1,150 @@
+クライアント側
+
+最新のFireFoxを導入、
+または、Safariを最新にしておく。
+
+
+メンテナンス側
+Windows
+C:\sukuba への導入例
+
+ディレクトリを作る。
+
+C:\SUKUBA
+├─a
+│  ├─docs
+│  ├─jsngram
+│  └─pub
+│      ├─db
+│      ├─idx
+│      └─txt
+├─bin
+├─original
+└─tmp
+
+サクラエディタ導入
+
+utf-8 を正しく扱えるテキストエディタであれば他でもよい。
+ここでは、たまたま、サクラエディタを使う。
+Windowsのメモ帳で編集すると壊れる。
+各社の、ホームページソフト類による編集も危険。
+
+インストール先を指定する。
+C:\sukuba\bin\sakura
+コンテキストメニューに、SAKURAで開く、を表示させる。
+
+必要なら、
+txt, py, js, html, css, json の設定を変更する。
+基本は、
+utf-8 (BOM無し), Lf
+Winows bat ファイルのみ、
+shift_jis, CrLf
+
+
+Microsoft Visual C++ Redistributable for Visual Studio 2015
+
+https://www.visualstudio.com/downloads/download-visual-studio-vs#d-visual-c
+
+Windows 7 ではこれが必要。(WinPythonが使う)
+x86 と x64 の両方を入れる。
+
+
+WinPython 導入
+
+https://sourceforge.net/projects/winpython/files/
+
+version 2, 3 の両方を導入。
+WinPython-64bit-2.7.10.3
+WinPython-64bit-3.4.4.3Qt5
+インストール先を指定する。
+細かいバージョンに依存しないパス名にする。
+（実際には依存したsubdirectoryが作られてしまうが。）
+ファイル関連付け等を行わない。
+
+C:\sukuba\bin\WinPython2
+C:\sukuba\bin\WinPython3
+
+
+JQuery の導入
+
+https://jquery.com/
+
+jquery-3.1.0.min.js
+を取得する。
+新しいバージョンにするなら、 search.html を修正する。
+
+./a/pub に配置
+
+
+検索ツールの導入
+
+GitHubの配布元
+https://github.com/sukuba
+
+GitHubのドキュメント
+http://sukuba.github.io/js-py-document-search
+http://sukuba.github.io/js-py-ngram-full-text-search
+
+js-py-ngram-full-text-search
+https://github.com/sukuba/js-py-ngram-full-text-search
+js-py-document-search
+https://github.com/sukuba/js-py-document-search
+の両方を入れる。
+
+それぞれのサイトで、
+右方にある、
+Clone or Download の、緑色のボタンを押し、
+、、、
+
+js-py-ngram-full-text-search
+
+jsngram フォルダの中身を .a/jsngram に配置
+ルートにある JsNgram.js ファイルを ./a/pub に配置
+
+js-py-document-search
+
+ルートにある search.* (*.html, *.css, *.js) ファイルを ./a/pub に配置
+ルートにある他のファイルを ./a に配置
+misc フォルダの中身を .a に配置
+docs フォルダの中身を .a/docs に配置
+
+
+ファイルの修正
+
+各種バージョンやら導入先が変わった場合には
+必要なファイルの修正が必要。
+主にbatファイル。
+
+文書の読み込み元が、setp1env.bat に定義されている。
+これは、必ず変更しなければいけない。
+（もしくは、このデフォルトの場所を使う。）
+デフォルトは、C:\sukuba\original
+動作確認で、少ないファイルのテストデータを指定したいときなんかも、
+これを変更して対応する。
+
+
+必要なパッケージの導入
+
+PDFMiner を Python 2 に入れる。
+（PDFを扱わなければ不要）
+
+コマンドプロンプトを起動する。
+cd C:\sukuba\a
+python2.bat
+pip install PDFMiner
+
+https://pypi.python.org/pypi/pdfminer.six
+PDFMiner の代わりに、
+pdfminer.six を使えば、 Python 2 が不要になり、 Python 3 だけで動くと思われる。
+が、pdfminer.six は試していない。
+
+また、本体は、 Python 3 向けに書いているが、
+コア部分は、Python 2 でも動作する作りになっている。
+ただ、
+日本語メッセージを出した時に、 Python 2 だとエラーを出す恐れがある。
+
+
+MS Office が導入済みであるという前提。
+（オフィス形式のファイルを扱わなければ不要）
+
+
