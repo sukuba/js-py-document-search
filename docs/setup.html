@@ -38,14 +38,14 @@ txt, py, js, html, css, json の設定を変更する。
 基本は、
 utf-8 (BOM無し), Lf
 Winows bat ファイルのみ、
-cp932, CrLf
+shift_jis, CrLf
 
 
 Microsoft Visual C++ Redistributable for Visual Studio 2015
 
 https://www.visualstudio.com/downloads/download-visual-studio-vs#d-visual-c
 
-Windows 7 ではこれが必要。
+Windows 7 ではこれが必要。(WinPythonが使う)
 x86 と x64 の両方を入れる。
 
 
@@ -58,6 +58,7 @@ WinPython-64bit-2.7.10.3
 WinPython-64bit-3.4.4.3Qt5
 インストール先を指定する。
 細かいバージョンに依存しないパス名にする。
+（実際には依存したsubdirectoryが作られてしまうが。）
 ファイル関連付け等を行わない。
 
 C:\sukuba\bin\WinPython2
@@ -128,7 +129,7 @@ PDFMiner を Python 2 に入れる。
 （PDFを扱わなければ不要）
 
 コマンドプロンプトを起動する。
-cd C:\sukuba
+cd C:\sukuba\a
 python2.bat
 pip install PDFMiner
 
