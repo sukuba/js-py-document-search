@@ -112,12 +112,15 @@ a:hover {
   }
   .info, .head {
     display: block;
+    justify-content: initial;
   }
   .info span {
     padding-right: 1rem;
+    display: inline-block;
   }
   .head span {
     padding-right: 1rem;
+    display: inline-block;
   }
   #q {
     width: 96%;
