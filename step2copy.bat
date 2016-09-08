@@ -4,6 +4,6 @@ rem ################################
 
 @echo %ORIGINAL% から %PUBLISH%\pub\db にコピーします。
 
-robocopy "%ORIGINAL%" %PUBLISH%\pub\db /mir
+robocopy "%ORIGINAL%" %PUBLISH%\pub\db /mir /xa:SHT
 
 rem # step2終了. ###

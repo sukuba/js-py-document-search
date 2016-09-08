@@ -12,6 +12,6 @@ rem 一時ファイル置き場
 set MyTMP=C:\sukuba\tmp
 
 rem Python 3 の環境設定
-call python3.bat
+call python3.bat > NUL
 
 rem # step1終了. ###
