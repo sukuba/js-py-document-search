@@ -1,150 +1,232 @@
-クライアント側
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>導入と設定 js-py-document-search</title>
+  <link rel="stylesheet" href="thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
 
-最新のFireFoxを導入、
-または、Safariを最新にしておく。
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>導入と設定</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../">.. 上の階層へ</a></span>
+    <span><a href="./">. この階層の見出しへ</a></span>
+  </nav>
+</div>
 
-
-メンテナンス側
-Windows
-C:\sukuba への導入例
-
-ディレクトリを作る。
-
-C:\SUKUBA
-├─a
-│  ├─docs
-│  ├─jsngram
-│  └─pub
-│      ├─db
-│      ├─idx
-│      └─txt
-├─bin
-├─original
-└─tmp
-
-サクラエディタ導入
-
+<main>
+  <section>
+    <h3>検索を使用する端末</h3>
+    <p>特別な設定は必要ない。</p>
+    <p>最新のFireFoxを導入、または、Safariを最新にしておく。</p>
+  </section>
+  
+  <section>
+    <h3>データ更新に使用する端末</h3>
+    <p>以下は、Windows 7 で、C:¥sukuba への導入例。</p>
+    <details>
+      <summary>次のとおりに、ディレクトリを作る。</summary>
+      <pre>
+  C:¥SUKUBA
+  ├─a
+  │  ├─docs
+  │  ├─jsngram
+  │  └─pub
+  │      ├─db
+  │      ├─idx
+  │      └─txt
+  ├─bin
+  ├─original
+  └─tmp
+      </pre>
+    </details>
+    <details>
+      <summary>サクラエディタ導入。</summary>
+      <p>
+        <a href="http://sakura-editor.sourceforge.net/download.html" target="_blank">http://sakura-editor.sourceforge.net/download.html</a>
+      </p>
+      <p>
 utf-8 を正しく扱えるテキストエディタであれば他でもよい。
 ここでは、たまたま、サクラエディタを使う。
 Windowsのメモ帳で編集すると壊れる。
 各社の、ホームページソフト類による編集も危険。
-
+      </p>
+      <p>
 インストール先を指定する。
 C:\sukuba\bin\sakura
+      </p>
+      <p>
 コンテキストメニューに、SAKURAで開く、を表示させる。
-
+      </p>
+      <p>
 必要なら、
 txt, py, js, html, css, json の設定を変更する。
-基本は、
-utf-8 (BOM無し), Lf
+ここでの流儀は、
+utf-8 (BOM無し), Lf での保存。
 Winows bat ファイルのみ、
-shift_jis, CrLf
-
-
+shift_jis, CrLf で保存。
+      </p>
+    </details>
+    <details>
+      <summary>
 Microsoft Visual C++ Redistributable for Visual Studio 2015
-
-https://www.visualstudio.com/downloads/download-visual-studio-vs#d-visual-c
-
+      </summary>
+      <p>
+        <a href="https://www.visualstudio.com/downloads/download-visual-studio-vs#d-visual-c" target="_blank">https://www.visualstudio.com/downloads/download-visual-studio-vs#d-visual-c</a>
+      </p>
+      <p>
 Windows 7 ではこれが必要。(WinPythonが使う)
 x86 と x64 の両方を入れる。
-
-
-WinPython 導入
-
-https://sourceforge.net/projects/winpython/files/
-
+      </p>
+    </details>
+    <details>
+      <summary>WinPython 導入</summary>
+      <p>
+        <a href="https://sourceforge.net/projects/winpython/files/" target="_blank">https://sourceforge.net/projects/winpython/files/</a>
+      </p>
+      <p>
 version 2, 3 の両方を導入。
-WinPython-64bit-2.7.10.3
-WinPython-64bit-3.4.4.3Qt5
 インストール先を指定する。
 細かいバージョンに依存しないパス名にする。
 （実際には依存したsubdirectoryが作られてしまうが。）
 ファイル関連付け等を行わない。
-
-C:\sukuba\bin\WinPython2
-C:\sukuba\bin\WinPython3
-
-
-JQuery の導入
-
-https://jquery.com/
-
+      </p>
+      <pre>
+導入するバージョン
+  WinPython-64bit-2.7.10.3
+  WinPython-64bit-3.4.4.3Qt5
+導入先
+  C:\sukuba\bin\WinPython2
+  C:\sukuba\bin\WinPython3
+      </pre>
+    </details>
+    <details>
+      <summary>JQuery の導入</summary>
+      <p>
+        <a href="https://jquery.com/" target="_blank">https://jquery.com/</a>
+      </p>
+      <p>
 jquery-3.1.0.min.js
 を取得する。
-新しいバージョンにするなら、 search.html を修正する。
-
-./a/pub に配置
-
-
-検索ツールの導入
-
+新しいバージョンにするなら、 search.html を修正する必要がある。
+./a/pub に配置。
+      </p>
+    </details>
+    <details>
+      <summary>本プロジェクトの導入</summary>
+      <p>
 GitHubの配布元
-https://github.com/sukuba
-
+        <a href="https://github.com/sukuba" target="_blank">https://github.com/sukuba</a>
+      </p>
+      <p>
 GitHubのドキュメント
-https://sukuba.github.io/js-py-document-search/
-https://sukuba.github.io/js-py-ngram-full-text-search/
-
+        <a href="https://sukuba.github.io/js-py-document-search/" target="_blank">https://sukuba.github.io/js-py-document-search/</a>
+        <a href="https://sukuba.github.io/js-py-ngram-full-text-search/" target="_blank">https://sukuba.github.io/js-py-ngram-full-text-search/</a>
+      </p>
+      <p>
 js-py-ngram-full-text-search
-https://github.com/sukuba/js-py-ngram-full-text-search
+        <a href="https://github.com/sukuba/js-py-ngram-full-text-search" target="_blank">https://github.com/sukuba/js-py-ngram-full-text-search</a>
 js-py-document-search
-https://github.com/sukuba/js-py-document-search
+        <a href="https://github.com/sukuba/js-py-document-search" target="_blank">https://github.com/sukuba/js-py-document-search</a>
 の両方を入れる。
-
+      </p>
+      <p>
 それぞれのサイトで、
 右方にある、
-Clone or Download の、緑色のボタンを押し、
-、、、
-
-js-py-ngram-full-text-search
-
+<span style="color: #eeddee; background-color:green;">Clone or download ▼</span> の、緑色のボタンを押し、
+<span style="color: #000099;">Download ZIP</span> を選択して、ファイルを保存する。
+保存した zip ファイルを展開する。
+      </p>
+      <details>
+        <summary>js-py-ngram-full-text-search</summary>
+        <ol>
+          <li>
 jsngram フォルダの中身を .a/jsngram に配置
+          </li>
+          <li>
 ルートにある JsNgram.js ファイルを ./a/pub に配置
-
-js-py-document-search
-
+          </li>
+        </ol>
+      </details>
+      <details>
+        <summary>js-py-document-search</summary>
+        <ol>
+          <li>
 ルートにある search*.* (*.html, *.css, *.js) ファイルを ./a/pub に配置
+          </li>
+          <li>
 ルートにある他のファイルを ./a に配置
+          </li>
+          <li>
 misc フォルダの中身を .a に配置
+          </li>
+          <li>
 docs フォルダの中身を .a/docs に配置
-
-
-ファイルの修正
-
+          </li>
+        </ol>
+      </details>
+    </details>
+    <details>
+      <summary>ファイルの修正</summary>
+      <p>
 各種バージョンやら導入先が変わった場合には
 必要なファイルの修正が必要。
-主にbatファイル。
-
+主にbatファイル内のパスを修正する。
+      </p>
+      <p>
 文書の読み込み元が、setp1env.bat に定義されている。
 これは、必ず変更しなければいけない。
-（もしくは、このデフォルトの場所を使う。）
-デフォルトは、C:\sukuba\original
+（もしくは、このデフォルトの場所 C:\sukuba\original を使う。）
 動作確認で、少ないファイルのテストデータを指定したいときなんかも、
 これを変更して対応する。
-
-
-必要なパッケージの導入
-
+      </p>
+    </details>
+    <details>
+      <summary>必要なパッケージの導入</summary>
+      <p>
 PDFMiner を Python 2 に入れる。
 （PDFを扱わなければ不要）
-
+      </p>
+      <pre>
 コマンドプロンプトを起動する。
 cd C:\sukuba\a
 python2.bat
 pip install PDFMiner
-
-https://pypi.python.org/pypi/pdfminer.six
+      </pre>
+      <p>
+        <a href="https://pypi.python.org/pypi/pdfminer.six" target="_blank">https://pypi.python.org/pypi/pdfminer.six</a>
+      </p>
+      <p>
 PDFMiner の代わりに、
 pdfminer.six を使えば、 Python 2 が不要になり、 Python 3 だけで動くと思われる。
 が、pdfminer.six は試していない。
-
-また、本体は、 Python 3 向けに書いているが、
-コア部分は、Python 2 でも動作する作りになっている。
-ただ、
-日本語メッセージを出した時に、 Python 2 だとエラーを出す恐れがある。
-
-
+      </p>
+    </details>
+    <details>
+      <summary>その他</summary>
+      <p>
+本体は、 Python 3 向けに書いているが、
+コアライブラリは、Python 2 でも動作する作りになっている。
+基本的な問題は、
+日本語メッセージを出した時に、 Python 2 を想定していない箇所だとエラーを出す恐れがあるということ。
+      </p>
+      <p>
 MS Office が導入済みであるという前提。
 （オフィス形式のファイルを扱わなければ不要）
+    </p>
+  </section>
+</main>
 
-
+<footer>
+  <span><a href="../">.. 上の階層へ</a></span>
+  <span><a href="./">. この階層の見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

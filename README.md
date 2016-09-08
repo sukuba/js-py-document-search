@@ -18,14 +18,14 @@ JavaScriptで書かれ、local動作可能な、N-gram方式の全文検索。
 * 深いディレクトリに整理した文書ファイルを全文検索したい。
 * 文書ファイルと検索システムを、セットで配布したい。
 
-## Search Engine
+## N-gram Search Engine
 
 [JsNgram](https://github.com/sukuba/js-py-ngram-full-text-search)
 
 ## 資料
 
 [説明書](https://sukuba.github.io/js-py-document-search/)
-[JsNgramの説明書](https://github.com/sukuba/js-py-ngram-full-text-search/)
+[JsNgramの説明書](https://sukuba.github.io/js-py-ngram-full-text-search/)
 
 ## License
 [MIT](LICENSE)

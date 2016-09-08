@@ -1,7 +1,31 @@
-メンテナンス側
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>データ更新 js-py-document-search</title>
+  <link rel="stylesheet" href="thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
 
-インデックス作成手順
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>データ更新</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../">.. 上の階層へ</a></span>
+    <span><a href="./">. この階層の見出しへ</a></span>
+  </nav>
+</div>
 
+<main>
+  <section>
+    <h3>インデックス作成手順</h3>
+    <details>
+      <summary>データの読み込み場所を変更する。</summary>
+      <pre>
 コンピューターを開く
 
 OS(C:)
@@ -10,55 +34,102 @@ a
 
 step1envを、SAKURAで開く。
 
-読み込み元ディレクトリを確認し、
-必要なら修正し、保存する。
+読み込み元ディレクトリを確認し、必要なら修正し、保存する。
 
 rem 使用するデータのディレクトリ
-set ORIGINAL=C:\sukuba\original
-
-
-
+set ORIGINAL=C:¥sukuba¥original
+             !ここを修正する!
+      </pre>
+    </details>
+    <details>
+      <summary>インデックスを作成する。</summary>
+      <p>
+この作業は時間がかかる。
+      </p>
+      <pre>
 コマンドプロンプトを開く
 
-cd C:\sukuba\a
+cd C:¥sukuba¥a
 
-C:\sukuba\a>
+C:¥sukuba¥a>
 と表示されていることを確認する。
 
 step-all
-
-ワードがダイアログを出せば、適宜、答えてあげる。
-
-C:\sukuba\a\pub の中身を、メディアに転送して配布する。
-
-
+      </pre>
+      <p>
+途中、ワードがダイアログを出せば、適宜、答えてあげる。
+（ワードファイルが不正な場合に警告が出るので、ファイルを修正すれば出なくなる。）
+      </p>
+    </details>
+    <details>
+      <summary>配布</summary>
+      <p>
+C:¥sukuba¥a¥pub の中身を、メディアに転送して配布する。
+      </p>
+    </details>
+    <details>
+      <summary>追加説明</summary>
+      <p>
 step-all.bat は以下を順次実行している。
 各ステップを確認しつつ、
 以下を個別に実行してもよい。
-
+      </p>
+      <pre>
 step1env
 step2copy
 setp3xls
 step4txt
 step5idx
-
-
-
-
+      </pre>
+      <details>
+        <summary>
 step1env
-環境変数を整える
-Python 3 の実行環境を作る
-
+        </summary>
+        <p>
+環境変数を整える。
+Python 3 の実行環境を作る。
+        </p>
+      </details>
+      <details>
+        <summary>
 step2copy
+        </summary>
+        <p>
 DBを編集場所のフォルダから、作業フォルダ兼配布フォルダにコピーする。
-
+        </p>
+      </details>
+      <details>
+        <summary>
 setp3xls
+        </summary>
+        <p>
 収録ファイル一覧.xls から実施課題一覧シートを読み、検索画面用の補助情報として保存する。
-
+        </p>
+      </details>
+      <details>
+        <summary>
 step4txt
+        </summary>
+        <p>
 dbのファイルをテキストに変換してtxtを作成する。
-
+        </p>
+      </details>
+      <details>
+        <summary>
 step5idx
+        </summary>
+        <p>
 txtのファイルから検索インデックスを作成しidxに保存する。
+        </p>
+      </details>
+    </details>
+  </section>
+</main>
 
-
+<footer>
+  <span><a href="../">.. 上の階層へ</a></span>
+  <span><a href="./">. この階層の見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>
