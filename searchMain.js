@@ -29,6 +29,20 @@ $(document).ready(function(){
   JsNgram.askToShowNextHits = '+ 続きを見る ... %%か所目より後の一致';
   JsNgram.partialMatches = '(部分一致)';
   
+  // 使い方のヒント
+  JsNgram.resultSelector.append(
+    [
+      '<ul><li>',
+      [
+        '任意のキーワードを含む文書を検索します。',
+        '英数字は半角で。',
+        'カタカナは全角で。',
+        'スペースを使っての複合検索はできません。'
+      ].join('</li><li>'),
+      '</li></ul>'
+    ].join('')
+  );
+  
   // fileinfo を取り込む。
   $.ajax(fileinfo, JsNgram.ajaxJson).done(function(result){
     JsNgram.titleInfo = result;
@@ -60,6 +74,7 @@ $(document).ready(function(){
     return(encodeURI(dbBase + withoutDotTXT));
   };
   
+  // 検索機能
   function enterSearch() {
     var what = $q.val();
     if(ignore.test(what)) {
