@@ -18,7 +18,7 @@ h2 {
   font-size: 1.8rem;
   margin: 0;
 }
-span, p, summary {
+span, p, summary, h3 {
   line-height: 2.1rem;
 }
 main {
