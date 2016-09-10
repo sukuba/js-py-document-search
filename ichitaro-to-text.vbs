@@ -1,24 +1,39 @@
 ' Extracts entire text from Ichitaro document as utf-8 text file.
 ' Works only on Windows with Justsystem Ichitaro installed.
 ' 
-' usage> CScript ichitaro-to-text.vbs IchitaroFile DesDir
+' usage> CScript ichitaro-to-text.vbs /normalize IchitaroFile DesDir
 ' 
 ' https://github.com/sukuba/js-py-document-search
 
 ' On Error Resume Next
-Main Args.Unnamed(1), Args.Unnamed(2)
+Set Args = WScript.Arguments
+Main Args.Named, Args.Unnamed(0), Args.Unnamed(1)
 ' If Err.Number <> 0 Then WScript.Echo Err.Description
 WScript.Quit(Err.Number)
 
-Sub Main(Src, Dest)
-  'Set texts = GetIchitaroText(Src)
-  Set texts = ForDebug()
-  ' DumpTexts texts
+Sub Main(Opts, Src, Dest)
+  If Opts.Exists("nojxw") Then
+    Set texts = ForDebug()
+  Else
+    Set texts = GetIchitaroText(Src)
+  End If
+  
+  If Opts.Exists("dump") Then
+    DumpTexts texts
+  End If
+  
   DestFileName = MergePath(Src, Dest)
   WScript.Echo Src, DestFileName
-  ' SaveTextFile DestFileName, texts
-  SaveUtf8TextFile DestFileName, texts
-  RunCmd "normalize-text.bat " & DestFileName
+  
+  If Opts.Exists("ansi") Then
+    SaveTextFile DestFileName, texts
+  Else
+    SaveUtf8TextFile DestFileName, texts
+  End If
+  
+  If Opts.Exists("normalize") Then
+    RunCmd "normalize-text.bat " & DestFileName
+  End If
 End Sub
 
 Function GetIchitaroText(FileName)
@@ -80,10 +95,10 @@ Sub SaveUtf8TextFile(texts, dest)
 End Sub
 
 Function MergePath(src, ByVal dest)
-  pos = InStrRev(src, '\')
-  srcDir = Left(src, pos)  ' includes the last \
+  pos = InStrRev(src, 'Å_')
+  srcDir = Left(src, pos)  ' includes the last Å_
   srcName = Mid(src, pos + 1)
-  If Right(dest, 1) <> '\' Then dest = dest & "\"
+  If Right(dest, 1) <> 'Å_' Then dest = dest & "Å_"
   destFullPath = dest & srcName & ".txt"
   
   MergePath = destFullPath
@@ -97,5 +112,5 @@ Sub RunCmd(command)
 End Sub
 
 Function ForDebug()
-  ForDebug = Array("apple", "orange", "grape")
+  ForDebug = Array("apple", "ÇèÇíÇÅÇéÇáÇÖ", "grape")
 End Function

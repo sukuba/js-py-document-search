@@ -1,1 +1,1 @@
-CScript ichitaro-to-text.vbs %*
+CScript /nologo ichitaro-to-text.vbs /normalize %*
