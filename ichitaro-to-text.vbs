@@ -95,10 +95,10 @@ Sub SaveUtf8TextFile(texts, dest)
 End Sub
 
 Function MergePath(src, ByVal dest)
-  pos = InStrRev(src, 'Å_')
-  srcDir = Left(src, pos)  ' includes the last Å_
+  pos = InStrRev(src, '\')
+  srcDir = Left(src, pos)  ' includes the last \
   srcName = Mid(src, pos + 1)
-  If Right(dest, 1) <> 'Å_' Then dest = dest & "Å_"
+  If Right(dest, 1) <> '\' Then dest = dest & "\"
   destFullPath = dest & srcName & ".txt"
   
   MergePath = destFullPath
