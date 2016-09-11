@@ -1,4 +1,5 @@
 /* full text search using JsNgram
+// https://github.com/sukuba/js-py-ngram-full-text-search
 // https://github.com/sukuba/js-py-document-search
 */
 
@@ -27,6 +28,14 @@ main {
 footer {
   margin-top: 1rem;
   text-align: right;
+}
+footer span:after {
+  content: ",";
+  margin-right: 0.5rem;
+}
+footer span:last-child:after {
+  content: none;
+  margin-right: 0;
 }
 a {
   text-decoration: none;
@@ -93,6 +102,17 @@ details {
   ul, ol {
     list-style-position: inside;
     padding: 0;
+  }
+  footer span {
+    display: block;
+  }
+  footer span a {
+    display: inline-block;
+    width: 100%;
+  }
+  footer span:after {
+    content: none;
+    margin-right: 0;
   }
 }
 /* for paper print */
