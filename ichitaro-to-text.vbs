@@ -13,7 +13,7 @@ WScript.Quit(Err.Number)
 
 Sub Main(Opts, Src, Dest)
   If Opts.Exists("nojxw") Then
-    Set texts = ForDebug()
+    texts = ForDebug()
   Else
     Set texts = GetIchitaroText(Src)
   End If
@@ -26,9 +26,9 @@ Sub Main(Opts, Src, Dest)
   WScript.Echo Src, DestFileName
   
   If Opts.Exists("ansi") Then
-    SaveTextFile DestFileName, texts
+    SaveTextFile texts, DestFileName
   Else
-    SaveUtf8TextFile DestFileName, texts
+    SaveUtf8TextFile texts, DestFileName
   End If
   
   If Opts.Exists("normalize") Then
@@ -57,11 +57,11 @@ End Sub
 
 Sub SaveTextFile(texts, dest)
   Const TristateFalse = 0
-  Const TristateTrue = -1
+  Const TristateTrue = -1 ' this will save as utf-8 with BOM
   Const ForWriting = 2
   
   Set FileSystem = CreateObject("Scripting.FileSystemObject")
-  Set Stream = FileSystem.OpenTextFile(dest, ForWriting, True, TristateTrue)
+  Set Stream = FileSystem.OpenTextFile(dest, ForWriting, True, TristateFalse)
   ' TristateTrue is required to save a text including non-ANSI characters.
   If Stream Is Nothing Then Err.Raise 52    ' invalid file name
   
@@ -72,9 +72,51 @@ Sub SaveTextFile(texts, dest)
   Stream.Close
   Set Stream = Nothing
   Set FileSystem = Nothing
-Ens Sub
+End Sub
 
 Sub SaveUtf8TextFile(texts, dest)
+  SaveUtf8TextFileWithBom texts, dest
+  RemoveBomFromFile dest
+End Sub
+
+Sub RemoveBomFromFile(dest)
+  ' remove BOM after ADODB.Stream done.
+  ' this removes 3 bytes at the beginning of file,
+  ' whether they are bom or not.
+  Const adTypeBinary = 1
+  Const adModeWrite = 2
+  Const adModeReadWrite = 3
+  Const adSaveCreateOverWrite = 2
+  
+  Set infs = CreateObject("ADODB.Stream")
+  With infs
+      .Type = adTypeBinary
+      .Open
+  End With
+  
+  Set outfs = CreateObject("ADODB.Stream")
+  With outfs
+      .Mode = adModeReadWrite
+      .Type = adTypeBinary
+      .Open
+  End With
+  
+  infs.LoadFromFile dest
+  infs.Position = 3  ' skip BOM
+  
+  infs.CopyTo outfs
+  'outfs.Write infs.Read
+  infs.flush
+  infs.Close
+  Set infs = Nothing
+  
+  outfs.SaveToFile dest, adSaveCreateOverWrite
+  outfs.Close
+  Set outfs = Nothing
+End Sub
+
+Sub SaveUtf8TextFileWithBom(texts, dest)
+  ' ADODB.Stream saves utf-8 with BOM.
   Const adTypeText = 2
   Const adSaveCreateOverWrite = 2
   
@@ -95,10 +137,10 @@ Sub SaveUtf8TextFile(texts, dest)
 End Sub
 
 Function MergePath(src, ByVal dest)
-  pos = InStrRev(src, '\')
+  pos = InStrRev(src, "\")
   srcDir = Left(src, pos)  ' includes the last \
   srcName = Mid(src, pos + 1)
-  If Right(dest, 1) <> '\' Then dest = dest & "\"
+  If Right(dest, 1) <> "\" Then dest = dest & "\"
   destFullPath = dest & srcName & ".txt"
   
   MergePath = destFullPath
@@ -107,6 +149,7 @@ End Function
 Sub RunCmd(command)
   Set Shell = CreateObject("WScript.Shell")
   cmd = "cmd /D /U /C " & command
+  WScript.Echo cmd
   rc = Shell.Run(cmd, 8, True)
   Set Shell = Nothing
 End Sub

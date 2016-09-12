@@ -11,19 +11,13 @@ import argparse
 import os.path
 import codecs
 
-def normal_text(text):
-    """
-    unicode normalization
-    """
-    import jsngram.text2
-    jsngram.text2.normalize_texts(file)
-    
 def normalize_text(args):
     """
     Normalize unicode (utf-8) text file.
     expected args; filename
     """
-    normal_text(text)
+    import jsngram.text2
+    jsngram.text2.normalize_texts(args.filename)
     
 
 def main():
