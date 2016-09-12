@@ -11,6 +11,10 @@ Main Args.Named, Args.Unnamed(0), Args.Unnamed(1)
 ' If Err.Number <> 0 Then WScript.Echo Err.Description
 WScript.Quit(Err.Number)
 
+' it's not nice, but uses global variable to keep the application between open and quit.
+' because texts object is an Ichitaro object, it disappears when the app quit.
+Dim app
+
 Sub Main(Opts, Src, Dest)
   If Opts.Exists("nojxw") Then
     texts = ForDebug()
@@ -31,6 +35,11 @@ Sub Main(Opts, Src, Dest)
     SaveUtf8TextFile texts, DestFileName
   End If
   
+  If Not Opts.Exists("nojxw") Then
+    Set texts = Nothing
+    QuitIchitaro
+  End If
+  
   If Opts.Exists("normalize") Then
     RunCmd "normalize-text.bat " & DestFileName
   End If
@@ -39,15 +48,20 @@ End Sub
 Function GetIchitaroText(FileName)
   Set app = CreateObject("JXW.Application")
   app.Visible = True
-  app.Document.Open FileName
+  app.Documents.Open FileName
   app.TaroLibrary.SelectAll 1
   Set texts = app.TaroLibrary.GetString()
   app.TaroLibrary.QuitDocumentWindow
-  app.Quit
-  Set app = Nothing
+  'app.Quit
+  'Set app = Nothing
   
   Set GetIchitaroText = texts
 End Function
+
+Sub QuitIchitaro()
+  app.Quit
+  Set app = Nothing
+End Sub
 
 Sub DumpTexts(texts)
   For Each text in texts
