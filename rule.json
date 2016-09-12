@@ -1,5 +1,6 @@
 [
   ["\\.(?:doc[mx]?|rtf)$", "C:\\sukuba\\a\\word-to-text.bat"],
   ["\\.jtdc?$", "C:\\sukuba\\a\\ichitaro-to-text.bat"],
+  ["\\.pptx?$", "C:\\sukuba\\a\\ppt-to-text.bat"],
   ["\\.pdf$", "C:\\sukuba\\a\\pdf-to-text.bat"]
 ]
