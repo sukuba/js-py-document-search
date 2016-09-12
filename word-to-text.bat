@@ -1,2 +1,2 @@
 call python3.bat > NUL
-python word-to-text.py --normalize %*
+python word_to_text.py --normalize %*
