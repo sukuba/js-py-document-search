@@ -85,8 +85,8 @@ def process_files(args):
     for k, v in stat['com'].items():
         print('  %d 個を次の手続きで処理。 %s' % (v, k))
     print('全体集計: ')
-    print('  %d 個をテキストに変換。' % stat['rc'][0])
-    print('  %d 個の変換に失敗。' % stat['rc'][1])
+    print('  %d 個をテキストに変換。' % stat['rc'].get(0, 0))
+    print('  %d 個の変換に失敗。' % stat['rc'].get(1, 0))
     
     #print(result)
     #print(stat)
