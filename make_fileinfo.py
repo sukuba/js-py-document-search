@@ -45,7 +45,7 @@ def main():
     r"""
     jsonファイルをfileinfo用に変換する。
     
-    make-fileinfo.py E:\scratch\sheet1.json E:\scratch\fileinfo.json --key 6 --value 4 5 1 2 3 0 --convertbackslash
+    make_fileinfo.py E:\scratch\sheet1.json E:\scratch\fileinfo.json --key 6 --value 4 5 1 2 3 0 --convertbackslash
     
     第1引数: 変換元jsonファイル（フルパス）
     第2引数: 出力先jsonファイル（フルパス）

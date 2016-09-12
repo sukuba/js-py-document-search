@@ -78,7 +78,7 @@ def main():
     r"""
     正規化済みのテキスト群からインデックスファイルを作る。
     
-    make-index.py E:\scratch txt idx
+    make_index.py E:\scratch txt idx
     
     第1引数: 基準ディレクトリ（フルパス）
     第2引数: 変換元テキストディレクトリ（基準からの相対パス）

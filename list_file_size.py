@@ -31,7 +31,7 @@ def main():
     r"""
     List file sizes of source directory, including subdirectories.
     
-    list-file-size.py E:\scratch\txt
+    list_file_size.py E:\scratch\txt
     
     1st arg: Source directory to read files (fullpath)
     

@@ -24,7 +24,7 @@ def main():
     r"""
     utf-8 textファイルをUnicode正規化する。
     
-    normalize-text.py E:\scratch\Hello.txt
+    normalize_text.py E:\scratch\Hello.txt
     
     第1引数: 対象ファイル（フルパス、上書き変更）
     

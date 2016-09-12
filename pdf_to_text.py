@@ -89,8 +89,8 @@ def main():
     r"""
     ＰＤＦファイルをutf-8 textファイルに変換する。
     
-    pdf-to-text.py E:\scratch\Hello.pdf E:\scratch
-    pdf-to-text.py Hello.pdf E:\scratch --normalize
+    pdf_to_text.py E:\scratch\Hello.pdf E:\scratch
+    pdf_to_text.py Hello.pdf E:\scratch --normalize
     
     第1引数: 変換元ＰＤＦ文書（フルパスまたは出力先パス）
     第2引数: 出力先ディレクトリ（フルパス）

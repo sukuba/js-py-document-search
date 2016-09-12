@@ -95,8 +95,8 @@ def main():
     r"""
     ワード文書をutf-8 textファイルに変換する。
     
-    word-to-text.py E:\scratch\Hello.doc E:\scratch
-    word-to-text.py Hello.doc E:\scratch --normalize
+    word_to_text.py E:\scratch\Hello.doc E:\scratch
+    word_to_text.py Hello.doc E:\scratch --normalize
     
     第1引数: 変換元ワード文書（フルパスまたは出力先パス）
     第2引数: 出力先ディレクトリ（フルパス）

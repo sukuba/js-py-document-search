@@ -105,8 +105,8 @@ def main():
     r"""
     一太郎文書をutf-8 textファイルに変換する。
     
-    ichitaro-to-text.py E:\scratch\Hello.jtd E:\scratch
-    ichitaro-to-text.py Hello.jtd E:\scratch --normalize
+    ichitaro_to_text.py E:\scratch\Hello.jtd E:\scratch
+    ichitaro_to_text.py Hello.jtd E:\scratch --normalize
     
     第1引数: 変換元一太郎文書（フルパスまたは出力先パス）
     第2引数: 出力先ディレクトリ（フルパス）
@@ -115,10 +115,10 @@ def main():
     --verbose: 冗長な情報を出力する
     
     utf-8 text ファイルを生成する。
-    ファイル名は末尾に .txt を付加する。 MyWord.jtd -> MyWord.jtd.txt
+    ファイル名は末尾に .txt を付加する。 MyDoc.jtd -> MyDoc.jtd.txt
     Unicode正規化には、jsngram packageを使用する。
     
-    ワード本体が必要（インストール済みであること）。
+    一太郎本体が必要（インストール済みであること）。
     
     このプログラムは一太郎を起動し、
     指定された文書ファイルを開き、

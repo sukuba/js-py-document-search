@@ -299,11 +299,11 @@ def main():
     r"""
     エクセル表をjsonファイルに変換する。
     
-    excel-to-json.py E:\scratch\Hello2.xls E:\scratch
-    excel-to-json.py Hello2.xls E:\scratch --noheader
-    excel-to-json.py Hello2.xls E:\scratch --columns B:C
-    excel-to-json.py Hello2.xls E:\scratch --origin B3 --columns B:C
-    excel-to-json.py Hello3.xls E:\scratch --url C
+    excel_to_json.py E:\scratch\Hello2.xls E:\scratch
+    excel_to_json.py Hello2.xls E:\scratch --noheader
+    excel_to_json.py Hello2.xls E:\scratch --columns B:C
+    excel_to_json.py Hello2.xls E:\scratch --origin B3 --columns B:C
+    excel_to_json.py Hello3.xls E:\scratch --url C
     
     第1引数: 変換元エクセルブック（フルパスまたは出力先パス）
     第2引数: 出力先ディレクトリ（フルパス）

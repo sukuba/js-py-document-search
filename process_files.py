@@ -96,7 +96,7 @@ def main():
     r"""
     サブディレクトリを含めたファイルを変換する。
     
-    process-files.py E:\scratch\rule.json E:\scratch\indir E:\scratch\outdir
+    process_files.py E:\scratch\rule.json E:\scratch\indir E:\scratch\outdir
     
     第1引数: 変換ルールを記述したjsonファイル（フルパス）
     第2引数: 入力元ディレクトリ（フルパス）
