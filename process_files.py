@@ -13,11 +13,24 @@ import subprocess
 import sys
 import re
 import argparse
+import os
+import shutil
 import codecs
 import json
 import datetime
 import jsngram.dir2
 
+def remove_entries(dest):
+    """
+    remove files and subdirectories at dest
+    """
+    for entry in os.listdir(dest):
+        fullpath = os.path.join(dest, entry)
+        if os.path.isfile(fullpath):
+            os.remove(fullpath)
+        else:
+            shutil.rmtree(fullpath)
+    
 def howto_process(rulefile):
     """
     generate rule function
@@ -57,10 +70,14 @@ def process_files(args):
     """
     process files in a directory tree at src and write at dest.
     rule is a json file that contains how to process each of files.
-    expected args; rule, src, dest, root
+    expected args; rule, src, dest, root, append
     """
     start_time = datetime.datetime.now()
     print('Start: ', start_time)
+    
+    if not args.append:
+        print('Removing current text files ...')
+        remove_entries(args.dest)
     
     rule = howto_process(args.rule)
     result = jsngram.dir2.apply_files(args.src, args.dest, rule, not args.root)
@@ -101,6 +118,7 @@ def main():
     第1引数: 変換ルールを記述したjsonファイル（フルパス）
     第2引数: 入力元ディレクトリ（フルパス）
     第3引数: 出力先ディレクトリ（フルパス）
+    --append: 出力先に追加する
     --root: ルートのファイルも出力する
     
     入力元のサブディレクトリを含む全ファイルを、
@@ -126,6 +144,7 @@ def main():
     parser.add_argument('rule', help='変換ルールを記述したjsonファイル')
     parser.add_argument('src', help='入力元ディレクトリ')
     parser.add_argument('dest', help='出力先ディレクトリ')
+    parser.add_argument('-a', '--append', action='store_true', help='出力先に追加する')
     parser.add_argument('-r', '--root', action='store_true', help='ルートのファイルも出力する')
     args = parser.parse_args()
     
