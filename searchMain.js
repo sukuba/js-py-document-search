@@ -57,7 +57,7 @@ $(document).ready(function(){
   JsNgram.loadTitleInfo = function(selector, docId) {
     var titleFn = this.makeResultHtml.title;
     var url = this.convertIdToUrl(docId);
-    var info = this.titleInfo[docId];
+    var info = this.titleInfo[docId.slice(0, -4)]; // remove '.txt'
     var title = docId;
     var data = [];
     if(info && Array.isArray(info) && info[0]) {
