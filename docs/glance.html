@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>At a glance - js-py-document-search</title>
+  <link rel="stylesheet" href="thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>概念図</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. この階層の見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <svg width="100%" viewbox="0 64 2200 900">
+    <defs>
+      <g>
+        <symbol id="arrow-head">
+          <polyline id="pol1" points="32 128 96 32 160 128" stroke-width="32" stroke-opacity="1" fill-opacity="0" />
+        </symbol>
+        <symbol id="round-path">
+          <circle id="cir1" cx="512", cy="512" r="256" stroke-width="32" stroke-opacity="1" fill-opacity="0" />
+        </symbol>
+        <symbol id="folder-box">
+          <rect id="box1" rx="16" ry="16" width="192" height="128" x="8", y="8" stroke-width="8" />
+          <use xlink:href="#box1" x="16", y="16" />
+        </symbol>
+        <symbol id="single-file">
+          <use xlink:href="#box1" x="8", y="8" />
+        </symbol>
+        <symbol id="operation-box">
+          <rect id="box2" rx="64" ry="64" width="192" height="192" x="8", y="8" stroke-width="8" />
+        </symbol>
+        <symbol id="domain-box">
+          <rect id="box3" width="1930" height="512" x="16", y="16" stroke-width="16" stroke-opacity="0.3" fill-opacity="0.1" />
+        </symbol>
+      </g>
+    </defs>
+    
+    <path d="M768 512  A 256 256 180 0 0 1280 512" stroke="#668cff" stroke-width="32" fill-opacity="0" />
+    <use xlink:href="#arrow-head" x="672", y="580" stroke="#668cff" transform="rotate(337 672 580)" />
+    
+    <path d="M1280 512  A 256 256 90 0 0 1024 256  L 768 256" stroke="#668cff" stroke-width="32" fill-opacity="0" />
+    <use xlink:href="#arrow-head" x="1372", y="430" stroke="#668cff" transform="rotate(157 1372 430)" />
+    
+    <path d="M1280 512  A 256 256 180 0 0 1792 512" stroke="#668cff" stroke-width="32" fill-opacity="0" />
+    <use xlink:href="#arrow-head" x="1730", y="500" stroke="#668cff" transform="rotate(32 1730 500)" />
+    
+    <path d="M1792 512  A 256 256 90 0 0 1536 256  L 1280 256" stroke="#668cff" stroke-width="32" fill-opacity="0" />
+    <use xlink:href="#arrow-head" x="1250", y="353" stroke="#668cff" transform="rotate(-90 1250 353)" />
+    
+    <use xlink:href="#round-path" x="0", y="0" stroke="#668cff" />
+    <use xlink:href="#arrow-head" x="370", y="180" stroke="#668cff" transform="rotate(53 370 180)" />
+    <use xlink:href="#arrow-head" x="535", y="332" stroke="#668cff" transform="rotate(-53 535 332)" />
+    <use xlink:href="#arrow-head" x="160", y="580" stroke="#668cff" transform="rotate(337 160 580)" />
+    
+    <use xlink:href="#domain-box" x="0", y="400" stroke="#ff8c66" fill="#ff8c66" />
+    <text x="42" y="910" font-size="32" text-anchor="start" fill="#661a00">
+提供者側 (データメンテナンス)
+    </text>
+    
+    <use xlink:href="#domain-box" x="102", y="96" stroke="#8cff66" fill="#8cff66" />
+    <text x="996" y="156" font-size="32" text-anchor="end" fill="#006600">
+閲覧者側 (検索利用者)
+    </text>
+    
+    <use xlink:href="#folder-box" x="152", y="440" stroke="#ff66ff" fill="white" />
+    <text x="280" y="520" font-size="32" text-anchor="middle" fill="#660066">
+pub/idx
+    </text>
+    <text x="280" y="560" font-size="32" text-anchor="middle" fill="#660066">
+(索引)
+    </text>
+    
+    <use xlink:href="#folder-box" x="664", y="440" stroke="#8c66ff" fill="white" />
+    <text x="780" y="520" font-size="32" text-anchor="middle" fill="#1a0066">
+pub/txt
+    </text>
+    <text x="780" y="560" font-size="32" text-anchor="middle" fill="#1a0066">
+(テキスト)
+    </text>
+    
+    <use xlink:href="#folder-box" x="1176", y="440" stroke="#8c66ff" fill="white" />
+    <text x="1292" y="520" font-size="32" text-anchor="middle" fill="#1a0066">
+pub/db
+    </text>
+    <text x="1292" y="560" font-size="32" text-anchor="middle" fill="#1a0066">
+(文書)
+    </text>
+    
+    <use xlink:href="#single-file" x="1688", y="440" stroke="#8c66ff" fill="white" />
+    <text x="1804" y="520" font-size="32" text-anchor="middle" fill="#1a0066">
+pub/fileinfo.json
+    </text>
+    <text x="1804" y="560" font-size="32" text-anchor="middle" fill="#1a0066">
+(著者他)
+    </text>
+    
+    <use xlink:href="#operation-box" x="408", y="152" stroke="#8cff66" fill="white" />
+    <text x="512" y="222" font-size="48" text-anchor="middle" fill="black">
+最新のブラウザ
+    </text>
+    <text x="512" y="252" font-size="32" text-anchor="middle" fill="black">
+(FireFox, Safari, )
+    </text>
+    <text x="512" y="300" font-size="32" text-anchor="middle" fill="black">
+索引情報を使って検索する
+    </text>
+    <text x="900" y="300" font-size="32" text-anchor="middle" fill="black">
+文書へリンク
+    </text>
+    <text x="1500" y="300" font-size="32" text-anchor="middle" fill="black">
+付加情報
+    </text>
+    
+    <use xlink:href="#operation-box" x="408", y="664" stroke="#ff8c66" fill="white" />
+    <text x="512" y="756" font-size="48" text-anchor="middle" fill="black">
+step5idx.bat
+    </text>
+    <text x="512" y="804" font-size="32" text-anchor="middle" fill="black">
+テキストから索引を作る
+    </text>
+    
+    <use xlink:href="#operation-box" x="920", y="664" stroke="#ff8c66" fill="white" />
+    <text x="1024" y="756" font-size="48" text-anchor="middle" fill="black">
+step4txt.bat
+    </text>
+    <text x="1024" y="804" font-size="32" text-anchor="middle" fill="black">
+文書をテキスト化する
+    </text>
+    
+    <use xlink:href="#operation-box" x="1432", y="664" stroke="#ff8c66" fill="white" />
+    <text x="1536" y="756" font-size="48" text-anchor="middle" fill="black">
+step3xls.bat
+    </text>
+    <text x="1536" y="804" font-size="32" text-anchor="middle" fill="black">
+エクセル情報を抽出する
+    </text>
+    
+  </svg>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. この階層の見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>
