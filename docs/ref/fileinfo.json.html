@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>fileinfo.json js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>fileinfo.json</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>インデックスと共に生成される</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+検索対象文書群の先頭階層にある、<code>収録ファイル一覧*.xls</code>ファイルから、
+<code><a href="step3xls.bat.html">step3xls.bat</a></code>によって生成される。
+検索の結果表示に、タイトルや著者名を付与する際に利用する。
+検索結果に一致するキーが、このファイルに無い場合、タイトル等の表示は行われず、文書へのパスがそのまま表示される。
+      </p>
+    </details>
+    <details>
+      <summary>仕様</summary>
+      <ul>
+        <li>
+json形式。
+        </li>
+        <li>
+文書のパスをキーとしたハッシュ。
+これは元のエクセルファイルの、E列のハイパーリンクから取得する。
+        </li>
+        <li>
+対応する値は、以下の項目の配列。
+タイトル、著者、年度、資料の種類、分別番号など、ユニークID。
+これは元のエクセルファイルの、E,F,B,C,D,A列に相当する。
+        </li>
+        <li>
+実施課題一覧シートだけを使う。
+        </li>
+      </ul>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>
