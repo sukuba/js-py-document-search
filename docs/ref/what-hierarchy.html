@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>ディレクトリの階層構造 js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>ディレクトリの階層構造</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>標準のディレクトリ構造</h3>
+    <p><a href="../setup.html">導入と設定</a>の手順どおりに入れた前提で説明する。</p>
+    <dl>
+      <dt>
+a
+      </dt>
+      <dd>
+一つのデータのセット。元データ、テキストデータ、インデックスデータ、検索用プログラム、インデックス構築用プログラムを含む。
+インデックスを構築する際に利用するスクリプトのファイルが多数入っている。
+同じようなセットを、b, c, 等複数入れ、それぞれを独立して扱える。step1env.bat にて変更可能。
+      </dd>
+      <dt>
+bin
+      </dt>
+      <dd>
+Python言語など、ソフトウェアの導入先。
+      </dd>
+      <dt>
+original
+      </dt>
+      <dd>
+検索の対象とする文書ファイル群の置き場。step1env.bat にて変更可能。
+      </dd>
+      <dt>
+tmp
+      </dt>
+      <dd>
+一時ファイル置き場。ppt-to-text.bat などが使用する。step1env.bat にて変更可能。
+      </dd>
+      <dt>
+a/jsngram
+      </dt>
+      <dd>
+JsNgram バックエンド。Python用ライブラリ。インデックスを構築する際に呼び出される。直接利用することはない。
+      </dd>
+      <dt>
+a/pub
+      </dt>
+      <dd>
+配布用データのセット。元データ、テキストデータ、インデックスデータ、検索用プログラムを含む。
+このフォルダごと、コピーして持ち出せば、どこでも検索できる。
+      </dd>
+      <dt>
+a/pub/docs
+      </dt>
+      <dd>
+この説明書が入っている。
+      </dd>
+      <dt>
+a/pub/db
+      </dt>
+      <dd>
+検索対象の元文書群を、そのままコピーしたものが格納される。検索結果から、ここにリンクしており、呼び出すことができる。
+      </dd>
+      <dt>
+a/pub/idx
+      </dt>
+      <dd>
+検索用のインデックスが格納される。これを利用して、高速検索を行う。インデックスは、バックエンドの<a href="../steps.html">データ更新</a>で作成する。
+      </dd>
+      <dt>
+a/pub/txt
+      </dt>
+      <dd>
+検索時のプレビュー表示で使用するテキストファイルが格納される。テキストファイルは、バックエンドの<a href="../steps.html">データ更新</a>で作成する。
+      </dd>
+    </dl>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>
