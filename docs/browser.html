@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>ブラウザ js-py-document-search</title>
+  <link rel="stylesheet" href="thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>ブラウザ</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. この階層の見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>使えるブラウザ</h3>
+    <details>
+      <summary>FireFox および Safari</summary>
+      <p>
+この2つが推奨ブラウザ。
+      </p>
+    </details>
+    <details>
+      <summary>使えるための要件（その他のブラウザの判定方法）</summary>
+      <details>
+        <summary>インターネット標準規格を満たすこと。</summary>
+        <p>
+いわゆるモダンブラウザで、W3Cなどの規格を順守したものが必要。
+キーワードは、 html5, css3, ecma6。
+JavaScript で ajax 呼び出しを行うため、スクリプト回りの性能が極端に低いものだと、
+速度が出ないかもしれない。
+Androidスマホ付属の（FireFoxでない）標準的なブラウザでも稼働しており、
+このハードルはそれほど高くない。
+        </p>
+        <p>
+JsNgramライブラリの<a href="https://sukuba.github.io/js-py-ngram-full-text-search/demo/" target="_blank">オンラインデモ</a>ページで、稼働ブラウザかどうかをすぐに確かめることができる。（英語）
+        </p>
+      </details>
+      <details>
+        <summary>ローカルファイルの動的呼び出しを許可していること。</summary>
+        <p>
+セキュリティポリシーの問題。
+Google Chrome や Microsoft IE は、ローカルファイルの ajax 呼び出しを制限しているため、
+サーバーレスでは使えない。
+また、iOS はローカルファイルへのアクセスを強く制限しているため、
+iPhone, iPad でも、サーバーレスでは使えない。
+このセキュリティポリシー制限だけが問題になるケースでは、
+静的なhttpサーバーを用意し、
+file:// プロトコルでなく http:// プロトコルを使うことで利用可能となる。
+        </p>
+      </details>
+    </details>
+  </section>
+  <section>
+    <h3>使えないブラウザ</h3>
+    <details>
+      <summary>Microsoft IE（マイクロソフト・インターネット・エクスプローラ）</summary>
+      <p>
+インターネット標準規格を満たさないため、動作しない。
+      </p>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. この階層の見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>
