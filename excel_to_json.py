@@ -10,7 +10,7 @@ https://github.com/sukuba/js-py-document-search
 """
 
 import argparse
-import os.path
+import os
 import codecs
 import sys
 import re
@@ -278,6 +278,19 @@ def find_first_match(path, pattern):
             return os.path.join(path, entry)
     sys.exit('No files found matching %s in %s.' % (pattern.pattern, path))
 
+def find_newest_match(path, pattern):
+    """
+    find a newest match file in path with pattern
+    """
+    
+    mtime = lambda f: os.stat(os.path.join(path, f)).st_mtime
+    # this function gives time of most recent content modification expressed in seconds.
+    
+    for entry in sorted(os.listdir(path), key=mtime, reverse=True):
+        if pattern.match(entry):
+            return os.path.join(path, entry)
+    sys.exit('No files found matching %s in %s.' % (pattern.pattern, path))
+
 def excel_to_json(args):
     """
     converts Excel book into json files per worksheet.
@@ -329,7 +342,8 @@ def main():
     ファイルとシート名の関連情報を、index.jsonに書き出す。
     ヘッダー情報があれば、columns.jsonに書き出す。
     url指定した列にHyperlink情報があれば、url情報としてカラム末尾に追加する。
-    pattern指定があれば、変換元ディレクトリで、最初に一致したファイルを変換元とする。
+    pattern指定があれば、変換元ディレクトリで、パターンに一致し、
+    タイムスタンプが最も新しいファイルを変換元とする。
     
     エクセル本体が必要（インストール済みであること）。
     
@@ -356,7 +370,7 @@ def main():
     
     args.filename = os.path.join(args.dest, args.filename)
     if args.pattern:
-        args.filename = find_first_match(args.filename, re.compile(args.pattern))
+        args.filename = find_newest_match(args.filename, re.compile(args.pattern))
     
     if args.verbose:
         print(args)
