@@ -12,7 +12,7 @@ $(document).ready(function(){
   JsNgram.indexBase = 'idx/';
   JsNgram.textBase = 'txt/';
   JsNgram.keySeparator = '/';
-  JsNgram.verbose = 1;
+  //JsNgram.verbose = 1;
   JsNgram.linkAttributes = { target: '_blank' };
   
   var dbBase = 'db/';
