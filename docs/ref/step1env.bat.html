@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>step1env.bat js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>step1env.bat</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>更新を実行するbatスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+環境変数を整える。
+Python 3 の実行環境を作る。
+Windows専用のbatファイル。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <p>
+引数不要。
+コマンドプロンプトで、更新対象のフォルダ（標準インストールなら C:\sukuba\a ）をカレントディレクトリにしてから実行する。
+      </p>
+    </details>
+    <details>
+      <summary>コード</summary>
+      <pre>
+rem ################################
+rem step1: 環境変数を整える
+rem ################################
+
+rem 使用するデータのディレクトリ
+set ORIGINAL=C:\sukuba\original
+
+rem 保存先
+set PUBLISH=C:\sukuba\a
+
+rem 一時ファイル置き場
+set MyTMP=C:\sukuba\tmp
+
+rem Python 3 の環境設定
+call python3.bat > NUL
+
+rem # step1終了. ###
+      </pre>
+    </details>
+    <details>
+      <summary>環境変数</summary>
+      <details>
+        <summary>ORIGINAL</summary>
+        <p>
+set ORIGINAL=C:\sukuba\original
+        </p>
+        <p>
+使用するデータのディレクトリを指定する。
+検索対象とする文書群、いわゆるオリジナルのあるディレクトリを指定する。
+ここから、保存先のフォルダに一度、丸ごとコピーし、
+以降は、コピーの方を使う。
+        </p>
+      </details>
+      <details>
+        <summary>PUBLISH</summary>
+        <p>
+set PUBLISH=C:\sukuba\a
+        </p>
+        <p>
+保存先。
+対象にしているフォルダ全体を指定する。標準インストールでは <code>a</code> だが、
+たとえば、<code>b</code> に新たなデータを用意して構築する場合には、
+これを、<code>C:\sukuba\b</code> などとする。
+        </p>
+      </details>
+      <details>
+        <summary>MyTMP</summary>
+        <p>
+set MyTMP=C:\sukuba\tmp
+        </p>
+        <p>
+一時ファイル置き場。
+読み書き可能な既存のディレクトリで、ファイルを上書き、あるいは削除しても構わない場所を指定する。
+        </p>
+      </details>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

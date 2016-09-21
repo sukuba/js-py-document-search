@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>pdf-to-text.bat js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>pdf-to-text.bat</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>step4用のbatスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+PDF形式の文書ファイルをutf-8テキストファイルに変換する。
+<code><a href="rule.json.html">rule.json</a></code>の記載により、対応するファイルに対して実行される。
+<code><a href="process_files.py.html">process_files.py</a></code>から直接呼び出される。
+<code><a href="pdf_to_text.py.html">pdf_to_text.py</a></code>を、引数丸投げで呼び出す。
+Windows専用のbatファイル。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <p>
+第1引数 = 変換したいファイルのフルパス。
+第2引数 = 変換先フォルダのフルパス。
+      </p>
+    </details>
+    <details>
+      <summary>コード</summary>
+      <pre>
+call python2.bat > NUL
+python pdf_to_text.py --normalize %*
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

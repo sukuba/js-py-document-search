@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>step3xls.bat js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>step3xls.bat</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>更新を実行するbatスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+収録ファイル一覧.xls から実施課題一覧シートを読み、検索画面用の補助情報として保存する。
+Windows専用のbatファイル。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <p>
+引数不要。
+コマンドプロンプトで、更新対象のフォルダ（標準インストールなら C:\sukuba\a ）をカレントディレクトリにしてから実行する。
+事前に、
+<code><a href="step1env.bat.html">step1env.bat</a></code>を実行して環境を整えておく必要がある。
+      </p>
+    </details>
+    <details>
+      <summary>コード</summary>
+      <pre>
+rem ################################
+rem step3: 収録ファイル一覧.xls を読み込む
+rem ################################
+
+python excel_to_json.py %PUBLISH%\pub\db %MyTMP% --pattern 収録ファイル一覧.*\.xls --sheet 実施課題一覧 --columns A:F --url E --formula
+
+python make_fileinfo.py %MyTMP%\sheet1.json %PUBLISH%\pub\fileinfo.json --key 6 --value 4 5 1 2 3 0 --convertbackslash
+
+rem # step3終了. ###
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>ppt_to_text.py js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>ppt_to_text.py</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>step4用のPythonスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+パワーポイント文書をutf-8 textファイルに変換する。
+<code><a href="ppt-to-text.bat.html">ppt-to-text.bat</a></code>から直接呼び出される。
+Python 3 用。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <pre>
+    ppt_to_text.py E:\scratch\Hello.doc E:\scratch E:\tmp
+    ppt_to_text.py Hello.doc E:\scratch E:\tmp --normalize
+    
+    第1引数: 変換元パワーポイント文書（フルパスまたは出力先パス）
+    第2引数: 出力先ディレクトリ（フルパス）
+    --tempdir: 一時ファイル作業用ディレクトリ（フルパス）
+    --keeptemp: 一時ファイルを削除しない
+    --normalize: テキストをUnicode正規化する
+    --invisible: ワードを非表示にする
+    --verbose: 冗長な情報を出力する
+    
+    utf-8 text ファイルを生成する。
+    ファイル名は末尾に .txt を付加する。 MyPpt.ppt -> MyPpt.ppt.txt
+    Unicode正規化には、jsngram packageを使用する。
+    
+    パワーポイントとワード本体が必要（インストール済みであること）。
+    
+    一時ファイル作業用ディレクトリには、
+    必ず、必要なファイルが無いディレクトリを指定する。
+    ここにあるファイルは無条件に上書き変更する。
+    
+    このプログラムはパワーポイントを起動し、
+    指定された文書ファイルを開き、
+    rtfとして一時ディレクトリに保存し、
+    パワーポイントを閉じる。
+    さらに word_to_text.py を利用して、
+    rtfを開き、
+    変換したtextを保存する。
+      </pre>
+    </details>
+    <details>
+      <summary>既知の問題</summary>
+      <p>
+パワーポイントに付属する、RTF形式保存機能には不具合があり、
+不正なファイルを出力する場合がある。
+この場合、ワードで読み込めないため、エラーが発生する。
+変換元ファイルの、フォントや書式等の編集履歴に依存するようだが、
+直接原因が不明なため、対処できない。
+書式等をシンプルにして保存すれば回避できるかもしれない。
+      </p>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

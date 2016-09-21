@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>ichitaro-to-text.vbs js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>ichitaro-to-text.vbs</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>step4用のVBScriptスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+一太郎形式の文書ファイルをutf-8テキストファイルに変換する。
+<code><a href="ichitaro-to-text.bat.html">ichitaro-to-text.bat</a></code>から直接呼び出される。
+Windows専用のVBScriptファイル。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <pre>
+第1引数 : 変換したい一太郎ファイルのフルパス
+第2引数 : 変換先フォルダのフルパス
+変換先ファイル名は、元のファイル名に .txt を付加したものになる。
+
+実行時オプション
+/normalize : unicode正規化を行う。
+/nojxw : 一太郎を起動せずダミーデータを使う（一太郎の無い環境でのデバッグ用）
+/dump  : 読み込んだテキストをコンソールに出力する（デバッグ用）
+/ansi  : 中間ファイルを cp932 で保存する。（デバッグ用）
+
+一太郎を起動し、
+指定ファイルを開き、
+全テキストを選択して取得する。
+
+テキストを選択するというプロセスが入っているため、
+一太郎を開いた時のウィンドウの状況に依存して、
+正しく動かない場合がある。
+
+通常の状態で開くように、
+ファイルを保存しておけば問題は回避できる。
+たとえば、校閲モードなどの特殊な状態を切っておくといった
+配慮が必要。
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

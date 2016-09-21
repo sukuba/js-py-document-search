@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>step4txt.bat js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>step4txt.bat</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>更新を実行するbatスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+dbのファイルをテキストに変換してtxtを作成する。
+Windows専用のbatファイル。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <p>
+引数不要。
+コマンドプロンプトで、更新対象のフォルダ（標準インストールなら C:\sukuba\a ）をカレントディレクトリにしてから実行する。
+事前に、
+<code><a href="step1env.bat.html">step1env.bat</a></code>を実行して環境を整えておく必要がある。
+      </p>
+    </details>
+    <details>
+      <summary>コード</summary>
+      <pre>
+rem ################################
+rem step4: テキストに変換する
+rem ################################
+
+python process_files.py %PUBLISH%\rule.json %PUBLISH%\pub\db  %PUBLISH%\pub\txt
+
+rem # step4終了. ###
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

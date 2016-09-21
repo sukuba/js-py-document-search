@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>python2.bat js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>python2.bat</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>Python 2 環境を作るbatスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+Python 2 の実行環境を整える。
+これを実行した後、 <code>python</code>と打てば、python 2 が動く。
+Windows専用のbatファイル。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <p>
+引数不要。
+パス等を加算するので、一つのshell環境で、一度だけ実行する。
+Pythonインストール時の固有パスを持っているため、
+インストールしたPythonに応じて変更する必要がある。
+WinPythonの場合、インストール先の、<code>scripts/env.bat</code>を参考にすればよい。
+      </p>
+    </details>
+    <details>
+      <summary>コード</summary>
+      <pre>
+set WINPYDIR=C:\sukuba\bin\WinPython2\python-2.7.10.amd64
+
+set WINPYVER=2.7.10.3
+
+set HOME=%WINPYDIR%\..\settings
+set WINPYARCH="WIN32"
+if  "%WINPYDIR:~-5%"=="amd64" set WINPYARCH="WIN-AMD64"
+
+set PATH=%WINPYDIR%\Lib\site-packages\PyQt5;%WINPYDIR%\Lib\site-packages\PyQt4;%WINPYDIR%\;%WINPYDIR%\DLLs;%WINPYDIR%\Scripts;%WINPYDIR%\..\tools;%WINPYDIR%\..\tools\mingw32\bin;%PATH%;
+
+rem force default pyqt5 kit for Spyder if PyQt5 module is there
+if exist %WINPYDIR%\Lib\site-packages\PyQt5 set QT_API=pyqt5
+
+set WINPYWORKDIR=C:\sukuba\tmp
+rem cd/D "%WINPYWORKDIR%"
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

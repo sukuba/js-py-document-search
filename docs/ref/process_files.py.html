@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>process_files.py js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>process_files.py</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>step4用のPythonスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+各種形式の文書ファイルをテキスト化する。
+<code><a href="step4txt.bat.html">step4txt.bat</a></code>から直接呼び出される。
+Python 3 用。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <pre>
+    サブディレクトリを含めたファイルを変換する。
+    
+    process_files.py E:\scratch\rule.json E:\scratch\indir E:\scratch\outdir
+    
+    第1引数: 変換ルールを記述したjsonファイル（フルパス）
+    第2引数: 入力元ディレクトリ（フルパス）
+    第3引数: 出力先ディレクトリ（フルパス）
+    --append: 出力先に追加する
+    --root: ルートのファイルも出力する
+    
+    入力元のサブディレクトリを含む全ファイルを、
+    変換ルールにしたがって変換し、
+    出力先に保存する。
+    出力の無いルールでは、出力先は利用しない。
+    
+    ルール記載例:
+    [
+      ["\\.txt$", "text-converter.exe"],
+      ["\\.(?:doc[mx]?|rtf)$", "word-converter.exe"],
+      ["\\.xls$", null],
+      [".*", "all-converter.exe"]
+    ]
+    上から順に適用し、最初の1つだけを適用する。
+    1つのルールは、ファイル名と比較する正規表現と、変換プログラムの配列。
+    変換をスキップする場合、プログラムに null を指定する。
+    最後まで合致するルールが無い場合も、変換をスキップする。
+    変換プログラムは、変換元ファイル名と、変換先ディレクトリを受け取る。
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

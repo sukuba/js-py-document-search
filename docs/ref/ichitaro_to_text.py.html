@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>ichitaro_to_text.py js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>ichitaro_to_text.py</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>使用していない</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+一太郎形式の文書ファイルをutf-8テキストファイルに変換する。
+pywin32と一太郎の相性が悪いようで、com通信エラーが出てしまう。
+Python 3 用。
+これが動かないので、
+<code><a href="ichitaro-to-text.vbs.html">ichitaro-to-text.vbs</a></code>を使うことになった。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <pre>
+    ichitaro_to_text.py E:\scratch\Hello.jtd E:\scratch
+    ichitaro_to_text.py Hello.jtd E:\scratch --normalize
+    
+    第1引数: 変換元一太郎文書（フルパスまたは出力先パス）
+    第2引数: 出力先ディレクトリ（フルパス）
+    --normalize: テキストをUnicode正規化する
+    --invisible: 一太郎を非表示にする
+    --verbose: 冗長な情報を出力する
+    
+    utf-8 text ファイルを生成する。
+    ファイル名は末尾に .txt を付加する。 MyDoc.jtd -> MyDoc.jtd.txt
+    Unicode正規化には、jsngram packageを使用する。
+    
+    一太郎本体が必要（インストール済みであること）。
+    
+    このプログラムは一太郎を起動し、
+    指定された文書ファイルを開き、
+    変換したtextを保存し、
+    一太郎を閉じる。
+      </pre>
+    </details>
+    <details>
+      <summary>Doesn't work!</summary>
+      <pre>
+        And,
+        The above gives an automation error, 
+        so it doesn't work!
+        While in the other com server (VBA) can do it as same manner.
+        I gave up to dig this any more, 
+        because actually I do not own the Ichitaro application.
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

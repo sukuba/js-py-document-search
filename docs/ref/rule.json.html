@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>rule.json js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>rule.json</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>step4用のPythonスクリプトを制御するjsonファイル</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+文書形式の振り分けルールを記述する。
+<code><a href="step4txt.bat.html">step4txt.bat</a></code>が、
+<code><a href="process_files.py.html">process_files.py</a></code>を呼び出す際に、
+ルール記述ファイルとして指定している。
+このファイルを修正することで、
+特定の文書ファイルに対して動作する、テキスト変換プログラムを変更できる。
+新たな種類の文書ファイルを扱うプログラムを追加することもできる。
+      </p>
+    </details>
+    <details>
+      <summary>記述方法</summary>
+      <ul>
+        <li>
+ArrayのArray。
+        </li>
+        <li>
+内側のArrayが一つのルールで、全体では複数ルールが集まった、ルールセットを構成している。
+        </li>
+        <li>
+早い位置にあるルールが優先される。
+        </li>
+        <li>
+ルールは、パターンと実行パスの2つの要素から成る。
+        </li>
+        <li>
+パターンが文書のファイル名に合致したとき、実行パスのプログラムを動かして、その文書を処理する。
+        </li>
+        <li>
+パターンは正規表現。
+        </li>
+        <li>
+プログラムは、OS上で実行できる形式で、第1引数に対象文書ファイルのフルパスを、第2引数に変換先フォルダのパスを受ける。
+        </li>
+        <li>
+最後のルールを過ぎても該当しない文書は、対象外となる。
+        </li>
+        <li>
+下記コードの1つ目のルールの解釈は、
+拡張子が doc, docm, docx, rtf の場合、
+C:\sukuba\a\word-to-text.bat を使って、
+当該ファイルを変換せよ、
+となる。
+これを1つにまとめず、4つ目の pdf のような単純な記法で、
+拡張子ごとに別々のルールとして記述しても構わない。
+        </li>
+      </ul>
+    </details>
+    <details>
+      <summary>コード</summary>
+      <pre>
+[
+  ["\\.(?:doc[mx]?|rtf)$", "C:\\sukuba\\a\\word-to-text.bat"],
+  ["\\.jtdc?$", "C:\\sukuba\\a\\ichitaro-to-text.bat"],
+  ["\\.pptx?$", "C:\\sukuba\\a\\ppt-to-text.bat"],
+  ["\\.pdf$", "C:\\sukuba\\a\\pdf-to-text.bat"]
+]
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>make_index.py js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>make_index.py</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>step5用のPythonスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+正規化済みのテキスト群からインデックスファイルを作る。
+<code><a href="step5idx.bat.html">step5idx.bat</a></code>から直接呼び出される。
+Python 3 用だが、 Python 2 でもほぼ稼働する。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <pre>
+    make_index.py E:\scratch txt idx
+    
+    第1引数: 基準ディレクトリ（フルパス）
+    第2引数: 変換元テキストディレクトリ（基準からの相対パス）
+    第3引数: インデックス出力先ディレクトリ（基準からの相対パス）
+    --size: N-gramの文字長（デフォルト 2）
+    --noshorter: 文字長より短いインデックスは作成しない（デフォルト False）
+    --flat: ディレクトリ型でなく、ファイル型のインデックスを作成する（デフォルト False）
+    --once: 一度にインデックスを作成するファイル数（デフォルト 100）
+    --ignore: 単語区切りとして、インデックスから除外する文字パターン（正規表現; デフォルト [\s,.，．、。]+）
+    --verbose: 冗長な情報を出力する
+    
+    入力は、単一ディレクトリ配下にtree構造で配置された、正規化済みの utf-8 text ファイル群。
+    出力は、N-gramによりtree構造に作成したインデックスファイル群。
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

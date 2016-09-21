@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>excel_to_json.py js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>excel_to_json.py</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>step3用のPythonスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+エクセル表をjsonファイルに変換する。
+<code><a href="step3xls.bat.html">step3xls.bat</a></code>から直接呼び出される。
+Python 3 用。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <pre>
+    excel_to_json.py E:\scratch\Hello2.xls E:\scratch
+    excel_to_json.py Hello2.xls E:\scratch --noheader
+    excel_to_json.py Hello2.xls E:\scratch --columns B:C
+    excel_to_json.py Hello2.xls E:\scratch --origin B3 --columns B:C
+    excel_to_json.py Hello3.xls E:\scratch --url C
+    
+    第1引数: 変換元エクセルブック（フルパスまたは出力先パス）
+    第2引数: 出力先ディレクトリ（フルパス）
+    --pattern: ファイル名曖昧指定（正規表現）
+    --sheet: 対象ワークシート（複数、省略時はすべて）
+    --origin: 基準セル（表範囲の左上アドレス、省略時はA1）
+    --columns: 有効カラム（絶対列アドレス）
+    --url: Hyperlink情報を持つ列（絶対列アドレス）
+    --noheader: 1行目からデータとして扱う
+    --text: Valueの代わりにTextを読む
+    --formula: Valueの代わりにFormulaR1C1を読む
+    --invisible: エクセルを非表示にする
+    --verbose: 冗長な情報を出力する
+    
+    生成するjsonは、ArrayのArray。行優先マトリックス。
+    sheet指定があれば、そのシート群が対象で、なければ全部が対象。
+    A1がブランクでないシートを変換対象とする。
+    シート単位でjsonファイルを作る。
+    すべてのシートが同じ形式だと想定している。
+    origin (A1)からの連続領域を有効データの範囲とする。
+    columns指定があれば、それを優先し、なければ、先頭シートの形式を優先する。
+    各シートを、sheet1.json等の連番ファイルに変換する。
+    ファイルとシート名の関連情報を、index.jsonに書き出す。
+    ヘッダー情報があれば、columns.jsonに書き出す。
+    url指定した列にHyperlink情報があれば、url情報としてカラム末尾に追加する。
+    pattern指定があれば、変換元ディレクトリで、パターンに一致し、
+    タイムスタンプが最も新しいファイルを変換元とする。
+    
+    エクセル本体が必要（インストール済みであること）。
+    
+    このプログラムはエクセルを起動し、
+    指定されたブックを開き、
+    変換したjsonを保存し、
+    エクセルを閉じる。
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

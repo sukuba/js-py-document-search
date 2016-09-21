@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>pdf_to_text.py js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>pdf_to_text.py</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>step4用のPythonスクリプト</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+更新用。
+エクセル表をjsonファイルに変換する。
+<code><a href="pdf-to-text.bat.html">pdf-to-text.bat</a></code>から直接呼び出される。
+Python 2 用。
+pdfminer package を使用しており、その制約で Python 2 を使う。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <pre>
+    ＰＤＦファイルをutf-8 textファイルに変換する。
+    
+    pdf_to_text.py E:\scratch\Hello.pdf E:\scratch
+    pdf_to_text.py Hello.pdf E:\scratch --normalize
+    
+    第1引数: 変換元ＰＤＦ文書（フルパスまたは出力先パス）
+    第2引数: 出力先ディレクトリ（フルパス）
+    --normalize: テキストをUnicode正規化する
+    --verbose: 冗長な情報を出力する
+    
+    utf-8 text ファイルを生成する。
+    ファイル名は末尾に .txt を付加する。 MyPdf.pdfc -> MyPdf.pdf.txt
+    Unicode正規化には、jsngram packageを使用する。
+    
+    pdfminer が必要。
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>

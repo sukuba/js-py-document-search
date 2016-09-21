@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>list_file_size.py js-py-document-search</title>
+  <link rel="stylesheet" href="../thema.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<div id="head">
+  <header>
+    <h1>js-py-document-search</h1>
+    <h2>list_file_size.py</h2>
+  </header>
+  
+  <nav>
+    <span><a href="../index.html">.. 上の階層へ</a></span>
+    <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  </nav>
+</div>
+
+<main>
+  <section>
+    <h3>ユーティリティ（使用していない）</h3>
+    <details>
+      <summary>説明</summary>
+      <p>
+指定したディレクトリの、サブディレクトリも含めたファイル名とサイズの一覧を取得する。
+ファイルサイズとファイルへのフルパスをタブ区切りで出力するので、
+出力をファイルに保存すれば、エクセルなどで開くことができる。
+たとえば pub/db および pub/txt のファイル一覧を取得して、
+エクセルで比較するといった用途に使える。
+Python 3 用だが、Python 2 でも動くかもしれない。
+      </p>
+    </details>
+    <details>
+      <summary>使用方法</summary>
+      <pre>
+    List file sizes of source directory, including subdirectories.
+    
+    list_file_size.py E:\scratch\txt
+    
+    1st arg: Source directory to read files (fullpath)
+    
+    Output to console: size(bytes) and fullpath delimited with tab
+      </pre>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <span><a href="../index.html">.. 上の階層へ</a></span>
+  <span><a href="./index.html">. リファレンスの見出しへ</a></span>
+  <span><a href="https://github.com/sukuba/js-py-document-search" target="_blank">sources are available at github. </a></span>
+</footer>
+</body>
+</html>
