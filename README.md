@@ -13,6 +13,10 @@ JavaScriptで書かれ、local動作可能な、N-gram方式の全文検索。
 * 検索クライアントは JavaScript。
 * バックエンドで事前構築したインデックスを用いて検索する。
 
+## 全体像
+
+[全貌を図示したもの](https://sukuba.github.io/js-py-document-search/glance.html)
+
 ## 用途（使用例）
 
 * 深いディレクトリに整理した文書ファイルを全文検索したい。
